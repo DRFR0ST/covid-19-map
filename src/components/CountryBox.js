@@ -4,6 +4,9 @@ import { setContentDisplay, setMapParametrs } from "../store/actions";
 import { getSortBy } from "../store/selectors";
 import { ReactComponent as ArrowIcon } from "../assets/arrow.svg";
 import { ReactComponent as PinIcon } from "../assets/pin-point.svg";
+import { ExpansionPanel, ExpansionPanelHead, ExpansionPanelTitle, ExpansionPanelDescription, ExpansionPanelContent, ExpansionPanelActions } from "./ExpansionPanel";
+import Button from "./Button";
+import { SectionStatistic, Section } from "./Section";
 
 const CountryBox = ({ data }) => {
   const dispatch = useDispatch();
@@ -20,6 +23,41 @@ const CountryBox = ({ data }) => {
       </div>
     );
   };
+
+  const handleMapShow = () => {
+    dispatch(setContentDisplay("map"));
+    dispatch(setMapParametrs(data.location, 5));
+  }
+
+  return <ExpansionPanel>
+      <ExpansionPanelHead open={expanded} onClick={() => expand(v => !v)}>
+          <ExpansionPanelTitle title={data.country}>{data.country}</ExpansionPanelTitle>
+          <ExpansionPanelDescription><span style={{color: dataDisplayed.color}}>{data[dataDisplayed.name]}</span></ExpansionPanelDescription>
+      </ExpansionPanelHead>
+      <ExpansionPanelContent open={expanded}>
+          <Section style={{margin: "20px 10px"}} title="Cases" color="orange">
+            <SectionStatistic label="Today" color="orange" value={data.todayCases} />
+            <SectionStatistic label="Total" color="orange" value={data.cases} />
+            <SectionStatistic label="Per one million" color="orange" value={data.casesPerOneMillion} />
+          </Section>
+          <Section style={{margin: "20px 10px"}} title="Deaths" color="red"> 
+            <SectionStatistic label="Today" color="red" value={data.todayDeaths} />
+            <SectionStatistic label="Total" color="red" value={data.deaths} />
+            <SectionStatistic label="Per one million" color="red" value={data.deathsPerOneMillion} />
+          </Section>
+          <Section style={{margin: "20px 10px"}}>
+            <SectionStatistic label="Critical" color="red" value={data.critical} />
+            <SectionStatistic label="Recovered" color="green" value={data.recovered} />
+            <SectionStatistic label="Active" color="purple" value={data.active} />
+          </Section>
+
+
+          <ExpansionPanelActions>
+            <Button spaceAround onClick={handleMapShow}>Show on map</Button>
+          </ExpansionPanelActions>
+      </ExpansionPanelContent>
+  </ExpansionPanel>
+
 
   return (
     <div className="country-box__container">
