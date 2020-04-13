@@ -1,0 +1,24 @@
+.section {
+    position: relative;
+
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, .2);
+    border-radius: 4px;
+    
+    padding: 10px 16px;
+    margin-top: 15px;
+
+    &-title {
+        margin: 0;
+        position: absolute;
+        top: -12px;
+        left: 15px;
+        padding: 0px 5px;
+        background: whitesmoke;
+    }
+
+    &-statistic {
+        text-align: center;
+        margin: 10px;
+    }
+}
