@@ -1,13 +1,18 @@
 @import "./mixins.scss";
 @import "./variables.scss";
-@import "./main.scss";
 @import"./breakpoints.scss";
+
+@import "./main.scss";
+
+/* Containers */
 @import "./containers/map.scss";
 @import "./containers/main-panel.scss";
 @import "./containers/global-cases-panel.scss";
 @import "./containers/country-cases-panel.scss";
 @import"./containers/content-displayer.scss";
 @import './containers/About.scss';
+
+/* Components */
 @import "./components/country-box.scss";
 @import "./components/loading.scss";
 @import "./components/data-box.scss";
