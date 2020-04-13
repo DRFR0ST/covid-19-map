@@ -1,0 +1,40 @@
+.expansion-panel {
+    width: 100%;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0;
+    
+    &:first-child {
+        border-top: 0;
+    }
+    &:last-child {
+        border-bottom: 0;
+    }
+    
+    &-head {
+        height: 42px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        cursor: pointer;
+
+        &-title {
+            width: 30%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: bold;
+        }
+
+        &-description {
+            width: 40%;
+        }
+    }
+
+    &-content {
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+    }
+}
